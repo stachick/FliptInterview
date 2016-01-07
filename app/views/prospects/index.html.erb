@@ -1,0 +1,35 @@
+<h1><%= @client_list.client %></h1>
+
+<h1>Full Info</h1>
+<table class="prospects">
+	<% @client_list.prospects.each do |prospect| %>
+	<tr id="<%= dom_id(prospect) %>">
+		<% if prospect.phone != ("") && prospect.phone != nil%>
+			<td><%= prospect.added_at %></td>
+			<td><%= prospect.name %></td>
+			<td><%= prospect.phone %></td>
+			<td><%= link_to "Edit", edit_client_list_prospect_path(prospect) %>
+			<%= link_to "Delete", client_list_prospect_path(prospect), method: :delete, data: { confirm: "Are you sure?" } %></td>
+		<% end %>
+	</tr>
+	<% end %>
+</table>
+
+<h1>Name Only</h1>
+<table class="prospects">
+	<% @client_list.prospects.each do |prospect| %>
+	<tr id="<%= dom_id(prospect) %>">
+		<% if prospect.phone == ("") || prospect.phone == nil%>
+			<td><%= prospect.added_at %></td>
+			<td><%= prospect.name %></td>
+			<td><%= prospect.phone %></td>
+			<td><%= link_to "Edit", edit_client_list_prospect_path(prospect) %>
+			<%= link_to "Delete", client_list_prospect_path(prospect), method: :delete, data: { confirm: "Are you sure?" } %></td>
+		<% end %>
+	</tr>
+	<% end %>
+</table>
+
+<p>
+	<%= link_to "Manually Add New Prospect", new_client_list_prospect_path %>
+</p>

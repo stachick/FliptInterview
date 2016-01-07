@@ -1,0 +1,5 @@
+<h1><%= @client_list.client %> - Editing Prospect</h1>
+
+<%= form_for [@client_list, @prospect] do |form| %>
+  <%= render partial: form %>
+<% end %>
